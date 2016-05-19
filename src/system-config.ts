@@ -3,10 +3,19 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@angular2-material': 'vendor/@angular2-material'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  '@angular2-material/toolbar': {
+    defaultExtension: 'js',
+    main: 'toolbar.js'
+  },
+  '@angular2-material/progress-circle': {
+    defaultExtension: 'js',
+    main: 'progress-circle.js'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +31,7 @@ const barrels: string[] = [
   '@angular/router',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
-  '@angular/app-shell', 
+  '@angular/app-shell',
 
   // Thirdparty barrels.
   'rxjs',
@@ -30,6 +39,7 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/+hello',
   /** @cli-barrel */
 ];
 
