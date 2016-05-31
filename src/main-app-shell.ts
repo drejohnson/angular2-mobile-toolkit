@@ -4,10 +4,7 @@ import { APP_SHELL_BUILD_PROVIDERS } from '@angular/app-shell';
 import { AppComponent } from './app/';
 import {
   REQUEST_URL,
-  ORIGIN_URL,
-  BASE_URL,
-  NODE_ROUTER_PROVIDERS,
-  NODE_HTTP_PROVIDERS
+  ORIGIN_URL
 } from 'angular2-universal';
 
 export const options = {
@@ -19,15 +16,12 @@ export const options = {
     APP_SHELL_BUILD_PROVIDERS,
     provide(ORIGIN_URL, {
       useValue: ''
-    }),
-    provide(BASE_URL, {useValue: '/'})
+    })
   ],
   providers: [
     // What URL should Angular be treating the app as if navigating
     provide(APP_BASE_HREF, {useValue: '/'}),
-    provide(REQUEST_URL, {useValue: '/'}),
-    ...NODE_HTTP_PROVIDERS,
-    ...NODE_ROUTER_PROVIDERS
+    provide(REQUEST_URL, {useValue: '/'})
   ],
   async: false,
   preboot: false

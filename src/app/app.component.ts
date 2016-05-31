@@ -1,40 +1,35 @@
 import { Inject, Component } from '@angular/core';
 import { APP_SHELL_DIRECTIVES, IS_PRERENDER } from '@angular/app-shell';
-import { MdToolbar } from '@angular2-material/toolbar';
-import { MdSpinner } from '@angular2-material/progress-circle';
 import { Routes , ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { HelloComponent } from './+hello';
+import { HomeComponent } from './+home';
+import { AboutComponent } from './+about';
+import { ToolbarComponent } from './shared';
 
 @Component({
   moduleId: module.id,
   selector: 'hello-mobile-app',
   template: `
-  <md-toolbar>
-    {{title}}
-  </md-toolbar>
-  <md-spinner *shellRender></md-spinner>
+  <app-toolbar *shellNoRender></app-toolbar>
   <router-outlet *shellNoRender></router-outlet>
   `,
-  styles: [`
-    md-spinner {
-      margin: 24px auto 0;
-    }
-  `],
-  directives: [APP_SHELL_DIRECTIVES, ROUTER_DIRECTIVES, MdToolbar, MdSpinner, HelloComponent],
-  providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS]
+  styles: [],
+  directives: [
+    ...ROUTER_DIRECTIVES,
+    ...APP_SHELL_DIRECTIVES,
+    ToolbarComponent
+  ],
+  providers: [
+    ...HTTP_PROVIDERS,
+    ...ROUTER_PROVIDERS
+  ]
 })
 @Routes([
-  {path: '/', component: HelloComponent}
+  {path: '/', component: HomeComponent},
+  {path: '/about', component: AboutComponent}
 ])
 export class AppComponent {
-  title = 'hello-mobile works!';
-
-  constructor(@Inject(IS_PRERENDER) isPrerender: boolean) {
-    if (!isPrerender) {
-      // fetch some data
-    }
-  }
+  title = 'App Title';
 
   ngOnInit() {
     console.log('Main component');

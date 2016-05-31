@@ -9,25 +9,25 @@ import {
 import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { HelloComponent } from './hello.component';
+import { HomeComponent } from './home.component';
 
-describe('Component: Hello', () => {
+describe('Component: Home', () => {
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [HelloComponent]);
+  beforeEachProviders(() => [HomeComponent]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
   }));
 
-  it('should inject the component', inject([HelloComponent],
-      (component: HelloComponent) => {
+  it('should inject the component', inject([HomeComponent],
+      (component: HomeComponent) => {
     expect(component).toBeTruthy();
   }));
 
   it('should create the component', inject([], () => {
-    return builder.createAsync(HelloComponentTestController)
+    return builder.createAsync(HomeComponentTestController)
       .then((fixture: ComponentFixture<any>) => {
-        let query = fixture.debugElement.query(By.directive(HelloComponent));
+        let query = fixture.debugElement.query(By.directive(HomeComponent));
         expect(query).toBeTruthy();
         expect(query.componentInstance).toBeTruthy();
       });
@@ -37,10 +37,10 @@ describe('Component: Hello', () => {
 @Component({
   selector: 'test',
   template: `
-    <app-hello></app-hello>
+    <app-home></app-home>
   `,
-  directives: [HelloComponent]
+  directives: [HomeComponent]
 })
-class HelloComponentTestController {
+class HomeComponentTestController {
 }
 
